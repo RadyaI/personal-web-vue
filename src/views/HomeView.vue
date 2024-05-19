@@ -2,7 +2,8 @@
   <div class="container">
     <div class="header">
       <div class="title">Radya</div>
-      <button class="next-btn" @click="change">{{ buttonText }} <i class="fa-solid"
+      <button class="next-btn" @click="change"><i class="fa-solid"
+          :class="{ 'fa-arrow-left': buttonText == 'Previous' }"></i> {{ buttonText }} <i class="fa-solid"
           :class="{ 'fa-arrow-right': buttonText == 'Next' }"></i></button>
     </div>
     <div class="cursor" :style="{ left: mouseX + 'px', top: mouseY + 'px' }"></div>
