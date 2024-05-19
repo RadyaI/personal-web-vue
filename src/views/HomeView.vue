@@ -154,7 +154,7 @@ export default {
 }
 
 .header {
-  border-bottom: 1px solid white;
+  /* border-bottom: 1px solid white; */
   color: white;
   margin-bottom: 10px;
   display: flex;
