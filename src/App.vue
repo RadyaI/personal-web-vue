@@ -7,6 +7,8 @@
   padding: 0;
   margin: 0;
   font-family: Poppins;
+}
+body{
   overflow: hidden;
 }
 body::-webkit-scrollbar{

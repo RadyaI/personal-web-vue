@@ -46,18 +46,19 @@
     </section>
     <section id="biodata" v-if="currentDisplay == 'bio'">
       <biodata :prosesGantiDisplay="prosesGantiDisplay" />
+      <particles></particles>
     </section>
   </div>
 </template>
 
 <script>
-// import particles from '@/components/particles.vue'
+import particles from '@/components/particles.vue'
 import biodata from '@/components/biodata.vue'
 import 'animate.css'
 export default {
   components: {
     biodata: biodata,
-    // particles: particles
+    particles: particles
   },
   data() {
     return {
@@ -98,10 +99,10 @@ export default {
       }
     },
     updateMousePosition(event) {
-      setTimeout(() => {
+      // setTimeout(() => {
         this.mouseX = event.clientX
         this.mouseY = event.clientY
-      }, 10)
+      // }, 10)
     }
   }
 }
@@ -154,6 +155,8 @@ export default {
   flex-direction: column; */
   /* cursor: url('../assets/cursor.png'), auto; */
   cursor: none;
+  overflow-y: hidden;
+  overflow-x: hidden
 }
 
 .header {
