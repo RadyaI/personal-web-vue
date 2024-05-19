@@ -241,7 +241,7 @@ export default {
     },
     data() {
         return {
-            display: 'project'
+            display: 'skill'
         }
     },
     mounted() {
