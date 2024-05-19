@@ -1,11 +1,12 @@
 <template>
-  <Partikel></Partikel>
   <div class="container">
     <div class="header">
       <div class="title">Radya</div>
-      <button class="next-btn" @click="next">Next <i class="fa-solid fa-arrow-right"></i></button>
+      <button class="next-btn" @click="change">{{ buttonText }} <i class="fa-solid"
+          :class="{ 'fa-arrow-right': buttonText == 'Next' }"></i></button>
     </div>
     <div class="cursor" :style="{ left: mouseX + 'px', top: mouseY + 'px' }"></div>
+
     <section id="home" v-if="currentDisplay == 'home'">
       <div class="wrapper">
         <div class="element-top">
@@ -42,18 +43,24 @@
         </div>
       </div>
     </section>
+
+    <section id="biodata" v-if="currentDisplay == 'bio'">
+      <biodata :prosesGantiDisplay="prosesGantiDisplay" />
+    </section>
+
   </div>
 </template>
 
 <script>
+import biodata from '@/components/biodata.vue'
 import 'animate.css'
-import Partikel from '@/components/partikelView.vue'
 export default {
   components: {
-    Partikel: Partikel
+    biodata: biodata
   },
   data() {
     return {
+      buttonText: 'Next',
       mouseX: 0,
       mouseY: 0,
       home: true,
@@ -68,15 +75,25 @@ export default {
     document.removeEventListener("mousemove", this.updateMousePosition)
   },
   methods: {
-    next() {
-      if (!this.prosesGantiDisplay) {
+    change() {
+      if (!this.prosesGantiDisplay && this.currentDisplay == 'home') {
         this.prosesGantiDisplay = true
         console.log("Sedang proses ganti display")
         setTimeout(() => {
           this.currentDisplay = 'bio'
           this.prosesGantiDisplay = false
+          this.home = false
+          this.buttonText = 'Previous'
           console.log('Ganti display sudah selesai')
-        }, 1500)
+        }, 1300)
+      } else if (!this.prosesGantiDisplay && this.currentDisplay == 'bio') {
+        this.prosesGantiDisplay = true
+        setTimeout(() => {
+          this.currentDisplay = 'home'
+          this.home = true
+          this.buttonText = "Next"
+          this.prosesGantiDisplay = false
+        }, 1300);
       }
     },
     updateMousePosition(event) {
@@ -137,13 +154,14 @@ export default {
 }
 
 .header {
-  /* border: 1px solid white; */
+  border-bottom: 1px solid white;
   color: white;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .title {
@@ -161,18 +179,28 @@ export default {
   /* cursor: pointer; */
   cursor: none;
   margin-right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s;
+}
+
+.next-btn:hover {
+  transform: scale(1.2);
 }
 
 .wrapper {
-  /* border: 5px solid white; */
+  /* border: 1px solid white; */
   width: 100vw;
   height: 85vh;
 }
 
 .element-top {
   /* border: 1px solid red; */
-  width: 100vw;
-  height: 17vh;
+  width: 100%;
+  height: auto;
+  padding-bottom: 30px;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -227,7 +255,7 @@ export default {
 
 .name {
   /* border: 1px solid red; */
-  width: 20vw;
+  width: auto;
   height: 40vh;
   display: flex;
   flex-direction: column;
