@@ -7,7 +7,7 @@
           :class="{ 'fa-arrow-right': buttonText == 'Next' }"></i></button>
     </div>
     <div class="cursor" :style="{ left: mouseX + 'px', top: mouseY + 'px' }"></div>
-    
+
     <section id="home" v-if="currentDisplay == 'home'">
       <div class="wrapper">
         <div class="element-top">
@@ -29,7 +29,8 @@
             </div>
           </div>
           <div class="name">
-            <p class="animate__animated" :class="{ animate__fadeOut: prosesGantiDisplay }">Hi! My name is</p>
+            <p id="name_top" class="animate__animated" :class="{ animate__fadeOut: prosesGantiDisplay }">
+              {{ name_top_text_display }}</p>
             <div class="name1 animate__animated" :class="{ animate__fadeOut: prosesGantiDisplay }">RADYA</div>
             <p class="animate__animated" :class="{ animate__fadeOut: prosesGantiDisplay }">Anything Dev</p>
           </div>
@@ -54,7 +55,9 @@
 <script>
 import particles from '@/components/particles.vue'
 import biodata from '@/components/biodata.vue'
+
 import 'animate.css'
+
 export default {
   components: {
     biodata: biodata,
@@ -62,6 +65,8 @@ export default {
   },
   data() {
     return {
+      name_top_text: 'Hi! MY NAME IS',
+      name_top_text_display: '',
       buttonText: 'Next',
       mouseX: 0,
       mouseY: 0,
@@ -71,12 +76,23 @@ export default {
     }
   },
   mounted() {
+    this.type()
     document.addEventListener("mousemove", this.updateMousePosition);
   },
   beforeUnmount() {
     document.removeEventListener("mousemove", this.updateMousePosition)
   },
   methods: {
+    type() {
+      let currentIndex = 0
+      const startTyping = setInterval(() => {
+        this.name_top_text_display += this.name_top_text[currentIndex]
+        currentIndex++
+        if (currentIndex >= this.name_top_text.length) {
+          clearInterval(startTyping)
+        }
+      }, 200);
+    },
     change() {
       if (!this.prosesGantiDisplay && this.currentDisplay == 'home') {
         this.prosesGantiDisplay = true
@@ -91,10 +107,12 @@ export default {
       } else if (!this.prosesGantiDisplay && this.currentDisplay == 'bio') {
         this.prosesGantiDisplay = true
         setTimeout(() => {
+          this.name_top_text_display = ''
           this.currentDisplay = 'home'
           this.home = true
           this.buttonText = "Next"
           this.prosesGantiDisplay = false
+          this.type()
         }, 1300);
       }
     },
