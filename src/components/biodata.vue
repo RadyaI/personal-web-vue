@@ -229,17 +229,17 @@
 
                 <!-- CARD EXP -->
                 <div class="card-exp" v-if="display == 'exp'">
-                    <div class="card-point">
+                    <div class="card-point animate__animated animate__fadeInLeft" :class="{'animate__fadeOutLeft' : prosesGantiDisplay}">
                         <div class="title"><i class="fa-solid fa-school"></i> <span>SMK Telkom Malang</span></div>
                         <div class="time"><small>2022 - Now</small></div>
                     </div>
-                    <div class="card-point" v-if="innerWidth <= 700">
+                    <div class="card-point animate__animated animate__fadeInLeft" :class="{'animate__fadeOutLeft' : prosesGantiDisplay}" v-if="innerWidth <= 700">
                         <i class="fa-solid fa-arrow-down"></i>
                     </div>
-                    <div class="card-point" v-if="innerWidth >= 700">
+                    <div class="card-point animate__animated animate__fadeInLeft" :class="{'animate__fadeOutLeft' : prosesGantiDisplay}" v-if="innerWidth >= 700">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
-                    <div class="card-point">
+                    <div class="card-point animate__animated animate__fadeInLeft" :class="{'animate__fadeOutLeft' : prosesGantiDisplay}">
                         <!-- <div class="title"><i class="fa-solid fa-school"></i> <span>?</span></div> -->
                         <div class="time"><small>?</small></div>
                     </div>
