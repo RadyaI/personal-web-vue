@@ -1,5 +1,5 @@
 <template>
-    <div id="particles-js"></div>
+    <div id="particles-js" class="partikel"></div>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
                     color: { value: '#ffffff' },
                     shape: {
                         type: 'circle',
-                        stroke: { width: 0, color: '#000000' },
+                        stroke: { width: 0, color: '#ffffff' },
                         polygon: { nb_sides: 5 },
                         image: { src: 'img/github.svg', width: 100, height: 100 }
                     },
@@ -74,12 +74,10 @@ export default {
 
 <style>
 #particles-container {
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  /* z-index: 1;  */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 </style>

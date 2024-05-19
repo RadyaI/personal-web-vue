@@ -7,6 +7,7 @@
           :class="{ 'fa-arrow-right': buttonText == 'Next' }"></i></button>
     </div>
     <div class="cursor" :style="{ left: mouseX + 'px', top: mouseY + 'px' }"></div>
+    
     <section id="home" v-if="currentDisplay == 'home'">
       <div class="wrapper">
         <div class="element-top">
@@ -41,7 +42,6 @@
           <div class="line line-three animate__animated"
             :class="{ animate__lightSpeedInRight: home, animate__lightSpeedOutRight: prosesGantiDisplay }"></div>
         </div>
-
       </div>
     </section>
     <section id="biodata" v-if="currentDisplay == 'bio'">
@@ -100,8 +100,8 @@ export default {
     },
     updateMousePosition(event) {
       // setTimeout(() => {
-        this.mouseX = event.clientX
-        this.mouseY = event.clientY
+      this.mouseX = event.clientX
+      this.mouseY = event.clientY
       // }, 10)
     }
   }
