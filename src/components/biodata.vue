@@ -10,7 +10,7 @@
                     :class="{ selected: display == 'project', 'animate__fadeOutUp': prosesGantiDisplay }">
                     <h3>PROJECT</h3>
                 </div>
-                <div class="experience animate__animated animate__fadeIn" @click="display = 'experience'"
+                <div class="experience animate__animated animate__fadeIn" @click="display = 'exp'"
                     :class="{ selected: display == 'experience', 'animate__fadeOutUp': prosesGantiDisplay }">
                     <h3>EXPERIENCE</h3>
                 </div>
@@ -226,6 +226,25 @@
                     </div>
                 </div>
                 <!-- CARD PROJECT -->
+
+                <!-- CARD EXP -->
+                <div class="card-exp" v-if="display == 'exp'">
+                    <div class="card-point">
+                        <div class="title"><i class="fa-solid fa-school"></i> <span>SMK Telkom Malang</span></div>
+                        <div class="time"><small>2022 - Now</small></div>
+                    </div>
+                    <div class="card-point" v-if="innerWidth <= 700">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </div>
+                    <div class="card-point" v-if="innerWidth >= 700">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                    <div class="card-point">
+                        <!-- <div class="title"><i class="fa-solid fa-school"></i> <span>?</span></div> -->
+                        <div class="time"><small>?</small></div>
+                    </div>
+                </div>
+                <!-- CARD EXP -->
             </div>
         </div>
     </div>
@@ -241,10 +260,14 @@ export default {
     },
     data() {
         return {
-            display: 'skill'
+            display: 'skill',
+            showArrow: false,
+            innerWidth: null
         }
     },
     mounted() {
+        this.innerWidth = innerWidth
+        console.log(innerWidth)
     }
 }
 </script>
@@ -295,6 +318,7 @@ export default {
 }
 
 .card .card-skill {
+    /* border: 1px solid white; */
     /* flex-wrap: wrap; */
     display: flex;
     gap: 16px;
@@ -386,8 +410,6 @@ export default {
     text-overflow: ellipsis;
 }
 
-
-
 .card .card-project .card-point .action {
     margin-top: 15px;
 }
@@ -416,6 +438,33 @@ export default {
     transform: scale(1.1);
 }
 
+.card .card-exp {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.card .card-exp .card-point {
+    color: white;
+    margin: 10px 0 0 10px;
+    width: fit-content;
+    padding: 18px;
+    /* height: fit-content; */
+    padding-bottom: 20px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start
+}
+
+.card .card-exp .card-point .title span {
+    margin-left: 10px;
+}
+
 @media only screen and (min-width: 1000px) {
     .card .card-skill .card-point {
         margin: 0 auto;
@@ -434,6 +483,12 @@ export default {
 
     .card .card-project {
         flex-direction: column;
+    }
+
+    .card .card-exp {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .wrapper {
