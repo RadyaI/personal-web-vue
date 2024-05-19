@@ -7,7 +7,6 @@
           :class="{ 'fa-arrow-right': buttonText == 'Next' }"></i></button>
     </div>
     <div class="cursor" :style="{ left: mouseX + 'px', top: mouseY + 'px' }"></div>
-
     <section id="home" v-if="currentDisplay == 'home'">
       <div class="wrapper">
         <div class="element-top">
@@ -42,22 +41,23 @@
           <div class="line line-three animate__animated"
             :class="{ animate__lightSpeedInRight: home, animate__lightSpeedOutRight: prosesGantiDisplay }"></div>
         </div>
+
       </div>
     </section>
-
     <section id="biodata" v-if="currentDisplay == 'bio'">
       <biodata :prosesGantiDisplay="prosesGantiDisplay" />
     </section>
-
   </div>
 </template>
 
 <script>
+// import particles from '@/components/particles.vue'
 import biodata from '@/components/biodata.vue'
 import 'animate.css'
 export default {
   components: {
-    biodata: biodata
+    biodata: biodata,
+    // particles: particles
   },
   data() {
     return {
@@ -143,6 +143,8 @@ export default {
 }
 
 .container {
+  position: relative;
+  z-index: 999;
   background-color: black;
   width: 100%;
   height: 100vh;
@@ -187,11 +189,15 @@ export default {
 }
 
 .next-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+  background: black;
+  color: white;
+  border: 1px solid white;
 }
 
 .wrapper {
   /* border: 1px solid white; */
+  z-index: 999;
   width: 100vw;
   height: 85vh;
 }

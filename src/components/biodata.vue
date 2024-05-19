@@ -57,6 +57,7 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 10px 30px 10px 20px;
+    user-select: none
 }
 
 .skill,
@@ -71,7 +72,9 @@ export default {
     transform: scale(1.2);
 }
 
-.wrapper .card {}
+.wrapper .card {
+    width: 100%;
+}
 
 .selected {
     border-bottom: 1px solid white;

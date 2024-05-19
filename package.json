@@ -11,6 +11,7 @@
     "@tsparticles/vue3": "^3.0.1",
     "animate.css": "^4.1.1",
     "core-js": "^3.8.3",
+    "particles.js": "^2.0.0",
     "sweetalert": "^2.1.2",
     "tsparticles": "^3.4.0",
     "vue": "^3.2.13",
