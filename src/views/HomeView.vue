@@ -19,7 +19,7 @@
           <div class="line line-three animate__animated"
             :class="{ animate__lightSpeedInLeft: home, animate__lightSpeedOutLeft: prosesGantiDisplay }"></div>
         </div>
-        <div class="content">
+        <div class="content animate__animated animate__fadeIn">
           <div class="card">
             <div class="card1 animate__animated" :class="{ animate__fadeOut: prosesGantiDisplay }">
               <img style="object-fit:cover; width: 100%;
