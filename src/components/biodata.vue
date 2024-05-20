@@ -11,7 +11,7 @@
                     <h3>PROJECT</h3>
                 </div>
                 <div class="experience animate__animated animate__fadeIn" @click="display = 'exp'"
-                    :class="{ selected: display == 'experience', 'animate__fadeOutUp': prosesGantiDisplay }">
+                    :class="{ selected: display == 'exp', 'animate__fadeOutUp': prosesGantiDisplay }">
                     <h3>EXPERIENCE</h3>
                 </div>
             </div>
@@ -385,6 +385,7 @@ export default {
 
 .card .card-project .card-point {
     color: white;
+    background-color: black;
     margin: 10px 0 0 10px;
     width: 300px;
     padding: 18px;
@@ -448,6 +449,7 @@ export default {
 
 .card .card-exp .card-point {
     color: white;
+    background-color: black;
     margin: 10px 0 0 10px;
     width: fit-content;
     padding: 18px;
@@ -458,7 +460,14 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start
+    align-items: start;
+    transition: transform 0.3s, background-color 0.3s, color 0.3s,; 
+}
+
+.card .card-exp .card-point:hover{
+    transform: scale(1.1);
+    background-color: white;
+    color: black;
 }
 
 .card .card-exp .card-point .title span {
