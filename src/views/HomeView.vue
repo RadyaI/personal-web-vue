@@ -117,10 +117,8 @@ export default {
       }
     },
     updateMousePosition(event) {
-      // setTimeout(() => {
       this.mouseX = event.clientX
       this.mouseY = event.clientY
-      // }, 10)
     }
   }
 }
