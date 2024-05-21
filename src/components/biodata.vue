@@ -229,17 +229,21 @@
 
                 <!-- CARD EXP -->
                 <div class="card-exp" v-if="display == 'exp'">
-                    <div class="card-point animate__animated animate__fadeInLeft" :class="{'animate__fadeOutLeft' : prosesGantiDisplay}">
+                    <div class="card-point animate__animated animate__fadeInLeft"
+                        :class="{ 'animate__fadeOutLeft': prosesGantiDisplay }">
                         <div class="title"><i class="fa-solid fa-school"></i> <span>SMK Telkom Malang</span></div>
                         <div class="time"><small>2022 - Now</small></div>
                     </div>
-                    <div class="card-point animate__animated animate__fadeInLeft" :class="{'animate__fadeOutLeft' : prosesGantiDisplay}" v-if="innerWidth <= 700">
+                    <div class="card-point animate__animated animate__fadeInLeft"
+                        :class="{ 'animate__fadeOutLeft': prosesGantiDisplay }" v-if="innerWidth <= 700">
                         <i class="fa-solid fa-arrow-down"></i>
                     </div>
-                    <div class="card-point animate__animated animate__fadeInLeft" :class="{'animate__fadeOutLeft' : prosesGantiDisplay}" v-if="innerWidth >= 700">
+                    <div class="card-point animate__animated animate__fadeInLeft"
+                        :class="{ 'animate__fadeOutLeft': prosesGantiDisplay }" v-if="innerWidth >= 700">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
-                    <div class="card-point animate__animated animate__fadeInLeft" :class="{'animate__fadeOutLeft' : prosesGantiDisplay}">
+                    <div class="card-point animate__animated animate__fadeInLeft"
+                        :class="{ 'animate__fadeOutLeft': prosesGantiDisplay }">
                         <!-- <div class="title"><i class="fa-solid fa-school"></i> <span>?</span></div> -->
                         <div class="time"><small>?</small></div>
                     </div>
@@ -256,7 +260,10 @@ import 'animate.css'
 export default {
     name: 'app',
     props: {
-        prosesGantiDisplay: Boolean
+        prosesGantiDisplay: {
+            type: Boolean,
+            required: true
+        }
     },
     data() {
         return {
@@ -267,7 +274,7 @@ export default {
     },
     mounted() {
         this.innerWidth = innerWidth
-        console.log(innerWidth)
+        console.log({LebarLayar: innerWidth})
     }
 }
 </script>
@@ -277,7 +284,7 @@ export default {
     /* border: 1px solid white; */
     margin-top: 30px;
     width: 100%;
-    height: 1vh;
+    height: fit-content;
 }
 
 .wrapper .menu {
@@ -308,7 +315,7 @@ export default {
     /* border: 1px solid greenyellow; */
     width: 100%;
     margin-top: 10px;
-    height: 250px;
+    height: fit-content;
     overflow-y: auto;
     overflow-x: auto;
 }
@@ -461,10 +468,10 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    transition: transform 0.3s, background-color 0.3s, color 0.3s,; 
+    transition: transform 0.3s, background-color 0.3s, color 0.3s, ;
 }
 
-.card .card-exp .card-point:hover{
+.card .card-exp .card-point:hover {
     transform: scale(1.1);
     background-color: white;
     color: black;
