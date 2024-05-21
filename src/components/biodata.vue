@@ -19,8 +19,13 @@
                 <!-- CARD SKILL -->
                 <div class="card-skill animate__animated animate__fadeInDown"
                     :class="{ 'animate__fadeOutUp': prosesGantiDisplay }" v-if="display == 'skill'">
+                    <!-- <div class="card-point" @mouseenter="toggleLevel()" @mouseleave="hideLevel()">
+                        <div class="stack">LARAVEL</div>
+                        <div class="level animate__animated" :class="{ hide: !level, animate__bounceIn: level }">
+                            BEGINNER</div>
+                    </div> -->
                     <div class="card-point">
-                        Laravel
+                        LARAVEL
                     </div>
                     <div class="card-point">
                         SQL
@@ -269,19 +274,30 @@ export default {
         return {
             display: 'skill',
             showArrow: false,
-            innerWidth: null
+            innerWidth: null,
+            level: false
+        }
+    },
+    methods: {
+        toggleLevel() {
+            this.level = true
+            console.log('Show Level')
+        },
+        hideLevel() {
+            this.level = false
+            console.log('Hide Level')
         }
     },
     mounted() {
         this.innerWidth = innerWidth
-        console.log({LebarLayar: innerWidth})
+        console.log({ LebarLayar: innerWidth })
     }
 }
 </script>
 
 <style scoped>
 .wrapper {
-    /* border: 1px solid white; */
+    /* border: 1px solid white;  */
     margin-top: 30px;
     width: 100%;
     height: fit-content;
@@ -341,6 +357,7 @@ export default {
 
 .card .card-skill .card-point {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
@@ -357,8 +374,12 @@ export default {
     transition: transform 0.3s;
 }
 
+.card .card-skill .card-point .level {
+    transition: opacity 0.3s ease
+}
+
 .card .card-skill .card-point:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
     background-color: white;
     color: black;
 }
@@ -514,5 +535,9 @@ export default {
     .wrapper .card {
         height: 100vh;
     }
+}
+
+.hide {
+    display: none;
 }
 </style>
