@@ -1,8 +1,18 @@
 <template>
     <div class="load-container">
-        <div class="moon">
-            <div class="shadow"></div>
+        <div class="loader">
+            <div class="loader-inner">
+                <div class="loader-block"></div>
+                <div class="loader-block"></div>
+                <div class="loader-block"></div>
+                <div class="loader-block"></div>
+                <div class="loader-block"></div>
+                <div class="loader-block"></div>
+                <div class="loader-block"></div>
+                <div class="loader-block"></div>
+            </div>
         </div>
+
     </div>
 </template>
 
@@ -23,34 +33,88 @@ export default {
     align-items: center
 }
 
-.moon,
-.shadow {
-    margin: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgb(216, 216, 216);
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-}
-
-.shadow {
-    width: 50px;
-    height: 50px;
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
     position: relative;
-    background: black;
-    /*Change these color to the bg of your website*/
-    transition: all .3s ease;
-    animation: move_4123 1.2s infinite alternate ease-in-out;
-    transform: translate3d(8px, -8px, 0);
 }
 
-@keyframes move_4123 {
-    100% {
-        transform: translate3d(36px, -36px, 0);
+.loader:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+}
+
+.loader-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.loader-block {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 2px;
+    background-color: #fff;
+    box-shadow: 0 0 20px #fff;
+    animation: loader_562 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.loader-block:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.loader-block:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loader-block:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.loader-block:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.loader-block:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.loader-block:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.loader-block:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.loader-block:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+@keyframes loader_562 {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    20% {
+        transform: scale(1, 2.5);
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+    }
+
+    40% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     }
 }
 </style>

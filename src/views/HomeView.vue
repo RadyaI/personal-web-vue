@@ -130,7 +130,7 @@ export default {
       state.isLoading = true
       setTimeout(() => {
         state.isLoading = false
-      }, 3000);
+      }, 2000);
       type();
       document.addEventListener("mousemove", updateMousePosition);
       console.log(state.home)
