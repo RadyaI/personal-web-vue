@@ -8,7 +8,9 @@
     </div>
     <div class="cursor" :style="{ left: mouseX + 'px', top: mouseY + 'px' }"></div>
 
-    <section id="home" v-if="state.currentDisplay == 'home'">
+    <loader v-if="state.isLoading" />
+
+    <section id="home" v-if="state.currentDisplay == 'home' && !state.isLoading">
       <div class="wrapper">
         <div class="element-top">
           <div class="line line-one animate__animated"
@@ -56,11 +58,13 @@
 import { ref, reactive, onMounted } from 'vue';
 import particles from '@/components/particles.vue';
 import biodata from '@/components/biodata.vue';
+import loader from '@/components/loader.vue'
 import 'animate.css';
 
 export default {
   components: {
     biodata,
+    loader,
     particles
   },
   setup() {
@@ -76,6 +80,8 @@ export default {
       home: true,
       currentDisplay: 'home',
       prosesGantiDisplay: false,
+
+      isLoading: false,
     });
 
     const type = () => {
@@ -121,6 +127,10 @@ export default {
 
 
     onMounted(() => {
+      state.isLoading = true
+      setTimeout(() => {
+        state.isLoading = false
+      }, 3000);
       type();
       document.addEventListener("mousemove", updateMousePosition);
       console.log(state.home)
